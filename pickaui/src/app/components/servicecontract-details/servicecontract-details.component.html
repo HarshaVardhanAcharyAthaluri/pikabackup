@@ -1,0 +1,304 @@
+<div class="container mainconatiner">
+  <div class="row mt-3 align-items-center wrapper">
+    <div class="col-md-4">
+      <h2 class="welcome">Service Contract {{serviceContractId}}</h2>
+    </div>
+    <div class="col-md-8 text-right">
+      <app-header></app-header> 
+    </div>
+  </div>
+  <div class="mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <input
+          type="text"
+          style="
+            width: 100%;
+            height: 40px;
+            border: 1px solid;
+            border-radius: 10px;
+            background-color: transparent;
+          "
+          placeholder="Search"
+        />
+      </div>
+      <div class="col-md-7 right-section">
+        <div class="btn-group">
+          <a href="#" class="btn btn-primary" aria-current="page"
+            ><svg
+              class="me-2"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+              ></path></svg>New Request</a
+          >
+          <a href="#" class="btn btn-light">View All</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mainconatiner" *ngIf="!showspinner">
+    <div class="col-sm sub-section">
+      <div class="section1">
+        <span>ID: </span>{{ serviceContractId }} <br />
+        <span>Contract Record Type: </span
+        >{{ servicecontractDetails.details.contractRecordtype }}<br />
+        <span>Status: </span>{{ servicecontractDetails.details.status }}<br />
+      </div>
+    </div>
+    <div class="col-sm sub-section">
+      <div class="section2">
+        <span>Contract Start Date: </span
+        >{{ servicecontractDetails.details.contractstartdate }} <br />
+        <span>Contract End Date: </span
+        >{{ servicecontractDetails.details.contractenddate }}<br />
+        <span>Contract Expiration Date: </span
+        >{{ servicecontractDetails.details.contractexpirationdate }}<br />
+      </div>
+    </div>
+    <div class="col-sm sub-section">
+      <div class="section3">
+        <span>Total Contract value: </span
+        >{{ servicecontractDetails.details.totalcontractvalue }}<br />
+        <span>Currency: </span>{{ servicecontractDetails.details.currencycode
+        }}<br />
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="showspinner"
+    class="spinner-border text-primary"
+    style="width: 3rem; height: 3rem; margin-top: 120px; margin-left: 400px"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="mainconatiner" *ngIf="!showspinner">
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Modules In Scope">
+        <div class="table-responsive">
+          <table
+            mat-table
+            [dataSource]="modluesInscopeList"
+            class="mat-elevation-z8 service_table"
+            *ngIf="!showspinner"
+          >
+            <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Line Column -->
+            <ng-container matColumnDef="Line">
+              <th mat-header-cell *matHeaderCellDef>Line</th>
+              <td mat-cell *matCellDef="let element">{{ element.ID }}</td>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.TargetStatusCode }}
+              </td>
+            </ng-container>
+
+            <!-- ProductID Column -->
+            <ng-container matColumnDef="Product Name">
+              <th mat-header-cell *matHeaderCellDef>Product Name</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.ProductID }}
+              </td>
+            </ng-container>
+
+            <!-- Product Description -->
+            <ng-container matColumnDef="Product Description">
+              <th mat-header-cell *matHeaderCellDef>Product Description</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.Description }}
+              </td>
+            </ng-container>
+
+            <!-- Module Quantity Column -->
+            <ng-container matColumnDef="Module Quantity">
+              <th mat-header-cell *matHeaderCellDef>Module Quantity</th>
+              <td mat-cell *matCellDef="let element">{{ element.Quantity }}</td>
+            </ng-container>
+
+            <!-- Unit Column -->
+            <ng-container matColumnDef="Unit">
+              <th mat-header-cell *matHeaderCellDef>Unit</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.QuantityUnitCode }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="modulesInscopeColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: modulesInscopeColumns"
+            ></tr>
+          </table>
+        </div>
+      </mat-tab>
+      <mat-tab label="Contract Hours Summary">
+        <table
+          mat-table
+          [dataSource]="contractHoursSummaryList"
+          class="mat-elevation-z8"
+          *ngIf="!showspinner"
+        >
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Line Column -->
+          <ng-container matColumnDef="Line">
+            <th mat-header-cell *matHeaderCellDef>Line</th>
+            <td mat-cell *matCellDef="let element">{{ element.ID }}</td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.TargetStatusCode }}
+            </td>
+          </ng-container>
+
+          <!-- ProductID Column -->
+          <ng-container matColumnDef="Product Name">
+            <th mat-header-cell *matHeaderCellDef>Product Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.ProductID }}</td>
+          </ng-container>
+
+          <!-- Product Description -->
+          <ng-container matColumnDef="Product Description">
+            <th mat-header-cell *matHeaderCellDef>Product Description</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Description }}
+            </td>
+          </ng-container>
+
+          <!-- Contract Hours Purchased Column -->
+          <ng-container matColumnDef="Contract Hours Purchased">
+            <th mat-header-cell *matHeaderCellDef>Contract Hours Purchased</th>
+            <td mat-cell *matCellDef="let element">{{ element.Quantity }}</td>
+          </ng-container>
+
+          <!-- Unit Column -->
+          <ng-container matColumnDef="Unit">
+            <th mat-header-cell *matHeaderCellDef>Unit</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.QuantityUnitCode }}
+            </td>
+          </ng-container>
+
+          <!-- Total Hours Worked Column -->
+          <ng-container matColumnDef="Total Hours Worked">
+            <th mat-header-cell *matHeaderCellDef>Total Hours Worked</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.TotalPeriodReleaseQuantity }}
+            </td>
+          </ng-container>
+
+          <!-- Total Hours Worked Column -->
+          <ng-container matColumnDef="TotalPeriodReleaseQuantityUnitCode">
+            <th mat-header-cell *matHeaderCellDef>Unit</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.TotalPeriodReleaseQuantityUnitCode }}
+            </td>
+          </ng-container>
+
+          <!-- Total Remaining Hours Worked Column -->
+          <ng-container matColumnDef="Total Remaining Hours">
+            <th mat-header-cell *matHeaderCellDef>Total Remaining Hours</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.TotalPeriodOpenQuantity }}
+            </td>
+          </ng-container>
+
+          <!-- Unit Column -->
+          <ng-container matColumnDef="TotalPeriodOpenQuantityUnitCode">
+            <th mat-header-cell *matHeaderCellDef>Unit</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.TotalPeriodOpenQuantityUnitCode }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="contractHoursSummary"></tr>
+          <tr mat-row *matRowDef="let row; columns: contractHoursSummary"></tr>
+        </table>
+      </mat-tab>
+      <mat-tab label="Hours Utilized Details">
+        <table
+          mat-table
+          [dataSource]="hoursUtilizedDetailsList"
+          class="mat-elevation-z8"
+          *ngIf="!showspinner"
+        >
+          <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.ID }}</td>
+          </ng-container>
+
+          <!-- Subject Column -->
+          <ng-container matColumnDef="Subject">
+            <th mat-header-cell *matHeaderCellDef>Subject</th>
+            <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+          </ng-container>
+
+          <!-- Type Column -->
+          <ng-container matColumnDef="Type">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.ProcessingTypeCodeText }}
+            </td>
+          </ng-container>
+
+          <!-- Status Description -->
+          <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.ServiceRequestUserLifeCycleStatusCodeText }}
+            </td>
+          </ng-container>
+
+          <!-- Reported On Column -->
+          <ng-container matColumnDef="Reported On">
+            <th mat-header-cell *matHeaderCellDef>Reported On</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.RequestInitialReceiptdatetimecontent }}
+            </td>
+          </ng-container>
+
+          <!-- Hours Utilized Column -->
+          <ng-container matColumnDef="Hours Utilized">
+            <th mat-header-cell *matHeaderCellDef>Hours Utilized</th>
+            <td mat-cell *matCellDef="let element">
+              <div style="color: red">api error</div>
+              {{ element.HoursUtilsedcontent_SDK }}
+            </td>
+          </ng-container>
+
+          <!-- Consultant Column -->
+          <ng-container matColumnDef="Consultant">
+            <th mat-header-cell *matHeaderCellDef>Consultant</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.ProcessorPartyName }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="hoursUtilizedDetails"></tr>
+          <tr mat-row *matRowDef="let row; columns: hoursUtilizedDetails"></tr>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

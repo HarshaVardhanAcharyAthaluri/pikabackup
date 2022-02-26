@@ -1,0 +1,37 @@
+<div class="container mainconatiner">
+    <div> 
+      <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+        <button type="button" class="btn btn-primary" style="float: left; margin-bottom: 10px;" *ngIf="!showspinner" [routerLink]="['/customer-list']">
+        <span class="glyphicon glyphicon-menu-left"></span>
+        <span style="color: white; text-decoration: none;">Back</span>
+      </button>
+    </div>
+      <div *ngIf="showspinner" class="spinner-border text-primary " style="width: 5rem; height: 5rem; margin-top: 120px;
+      margin-left: 400px;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    <table class="table" *ngIf="!showspinner && !error">
+      <tbody>
+        <tr>
+          <th class="accountdetailrow">Account ID : </th>
+          <td class="accountdetailrow">{{c4ccustomer.AccountID}}</td>
+        </tr>
+        <tr>
+          <th class="accountdetailrow">Status : </th>
+          <td class="accountdetailrow">{{c4ccustomer.LifeCycleStatusCode}}</td>
+        </tr>
+        <tr>
+            <th class="accountdetailrow">Account Address : </th>
+            <td class="accountdetailrow">{{c4ccustomer.FormattedPostalAddressDescription}}</td>
+        </tr>
+        <tr>
+            <th class="accountdetailrow">Industry : </th>
+            <td class="accountdetailrow">{{c4ccustomer.IndustrialSectorCode}}</td>
+        </tr>
+        <tr>
+          <th class="accountdetailrow">Employee Count : </th>
+          <td class="accountdetailrow">{{c4ccustomer.NoOfEmployees_SDK}}</td>
+        </tr> 
+      </tbody>
+      </table>
+</div>

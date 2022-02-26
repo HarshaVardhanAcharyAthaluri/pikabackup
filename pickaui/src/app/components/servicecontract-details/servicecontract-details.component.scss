@@ -1,0 +1,54 @@
+.mainconatiner {
+  margin: 10px;
+}
+
+.contractheader {
+  margin-top: 5px;
+  background-color: #ebedef;
+}
+table {
+  width: 100%;
+}
+.sub-section {
+  line-height: 2.4;
+}
+
+@media only screen and(max-width:767px) {
+  .section2 {
+    margin-left: 0rem;
+    margin-top: 1rem;
+  }
+  .section3 {
+    margin-left: 0rem;
+    margin-top: 1rem;
+  }
+}
+.service_table {
+  .mat-header-row {
+    background-color: #f8d276 !important;
+  }
+}
+table {
+  width: 100%;
+  tr {
+    background-color: #fff;
+  }
+  td {
+    padding: 10px;
+  }
+}
+input {
+  padding: 1rem;
+}
+.sub-section {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-right: 1rem;
+  border: 1px solid #ddd;
+  @media only screen and(max-width:767px) {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+  }
+}

@@ -1,0 +1,174 @@
+<div class="col-md-12 login-wrapper">
+  <div
+    *ngIf="showspinner"
+    class="spinner-border text-primary"
+    style="width: 5rem; height: 5rem; margin-top: 120px; margin-left: 400px"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div class="login">
+    <div class="container-section login-container">
+      <header class="login-header">
+        <a href="index.html">
+          <img src="/assets/images/logo.png" />
+        </a>
+      </header>
+      <form
+        name="form "
+        class="login-section"
+        (ngSubmit)="f.form.valid && login()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group login-box">
+          <!-- <label for="email">email</label> -->
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                fill="currentColor"
+                class="bi bi-person"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                ></path>
+              </svg>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              name="user"
+              [(ngModel)]="user.email"
+              required
+              placeholder="Username"
+              #email="ngModel"
+            />
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && email.invalid"
+          >
+            email is required!
+          </div>
+        </div>
+        <div class="form-group login-box">
+          <!-- <label for="password">Password</label> -->
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                fill="currentColor"
+                class="bi bi-key"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"
+                ></path>
+                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+              </svg>
+            </span>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              [(ngModel)]="user.password"
+              required
+              minlength="5"
+              #password="ngModel"
+            />
+          </div>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && password.invalid"
+          >
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 5 characters
+            </div>
+          </div>
+        </div>
+        <div class="row mb-5 login-bottom-section">
+          <div class="col-md-6">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label" for="exampleCheck1"
+                >Remember Me</label
+              >
+            </div>
+          </div>
+          <div class="col-md-6 text-end">
+            <a href="#">Forgot Password?</a>
+          </div>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary"></button> -->
+        <!-- <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">
+          Login
+        </button>
+      </div> -->
+        <div class="text-center login-btn">
+          <button class="btn btn-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="me-2"
+              width="22"
+              height="22"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
+              ></path>
+              <path
+                fill-rule="evenodd"
+                d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+              ></path>
+            </svg>
+            Login
+          </button>
+        </div>
+        <!-- <div class="row g-0 mt-5 social-logo">
+          <div class="col-12 text-center section">
+            <a href="#">
+              <img src="/assets/images/chat.svg" class="m" />
+              <img src="/assets/images/chat-h.svg" class="h" />
+            </a>
+            <a href="#" class="ms-4 me-4">
+              <img src="/assets/images/blog.png" class="m" />
+              <img src="/assets/images/blog-h.svg" class="h" />
+            </a>
+
+            <a href="#"
+              ><img src="/assets/images/faq.png" class="m" />
+              <img src="/assets/images/faq-h.png" class="h" />
+            </a>
+          </div>
+        </div> -->
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && isLoginFailed"
+          >
+            Login failed: {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

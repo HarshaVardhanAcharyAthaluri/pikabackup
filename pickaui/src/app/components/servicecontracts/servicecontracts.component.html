@@ -1,0 +1,86 @@
+<div class="container mainconatiner">
+    <div class="row mt-3 align-items-center wrapper">
+      <div class="col-md-4">
+        <h2 class="welcome">Service Contract</h2>
+      </div>
+      <div class="col-md-8 text-right">
+        <app-header></app-header> 
+      </div>
+    </div>
+    <div class="mt-4" *ngIf="serviceContractList !== undefined && !showspinner">
+      <div class="row justify-content-center">
+        
+        <div class="col-md-5">
+          <input
+            type="text"
+            style="
+              width: 100%;
+              height: 40px;
+              border: 1px solid;
+              border-radius: 10px;
+              background-color: transparent;
+            "
+            placeholder="Search"
+          />
+        </div>
+        <div class="col-md-7 right-section">
+          <div class="btn-group">
+            <a href="#" class="btn btn-primary" aria-current="page"
+              ><svg
+                class="me-2"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                ></path></svg>New Request</a
+            >
+            <a href="#" class="btn btn-light">View All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+    <div *ngIf="showspinner" class="spinner-border text-primary " style="width: 5rem; height: 5rem; margin-top: 120px;
+    margin-left: 400px;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+   <div class="mt-3 table-responsive">
+      <table class="table service_table " *ngIf="serviceContractList">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col"> Record Type</th>
+            <th scope="col"> Start Date</th>
+            <th scope="col"> End Date</th>
+            <th scope="col"> Expiration Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of serviceContractList" [routerLink]="['/servicecontractdetails',item.ID,
+          {
+            contractRecordtype:item.Name,
+            contractstartdate:item.ValidityStartDate,
+              contractenddate:item.ValidityEndDate,
+            contractexpirationdate:item.ContractExpirationDate_KUT,
+            status:item.ContractLifeCycleStatusCode,
+            totalcontractvalue:item.TotalContractValue_KUT,
+            currencycode:item.CurrencyCode
+          }]">
+            <td class="id">{{item.ID}}</td>
+            <td>{{item.Name}}</td>
+            <td class="date">{{item.ValidityStartDate}}</td>
+            <td class="date">{{item.ValidityEndDate}}</td>
+            <td class="date">{{item.ContractExpirationDate_KUT}}</td>
+            <td>{{item.ContractLifeCycleStatusCode}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+</div>

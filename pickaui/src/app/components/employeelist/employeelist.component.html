@@ -1,0 +1,32 @@
+<div class="container mainconatiner">
+  <div>
+    <span class="alert alert-success" *ngIf="successmsg!==''">{{successmsg}}</span>
+      <span class="alert alert-danger" *ngIf="erromsg!==''">{{erromsg}}</span>   
+    <button type="button" class="btn btn-primary" style="float: right; margin-bottom: 10px;">
+    <span class="glyphicon glyphicon-plus">
+    </span><a href="/register" style="color: white; text-decoration: none;"> Add New Employee</a>
+  </button>
+  </div>
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">NAME</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of empList">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>
+          <button type="button" class="btn btn-default btn-sm"  [routerLink]="[ '/update-employee',item.id]" ><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+          <button type="button" class="btn btn-default btn-sm" (click)="deleteemployee(item.id)"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+  </div>

@@ -1,0 +1,202 @@
+<div class="container mainconatiner">
+  <div class="row mt-3 align-items-center wrapper">
+    <div class="col-md-4">
+      <h2 class="welcome">Tickets</h2>
+    </div>
+    <div class="col-md-8 text-right top-right-section m-none">
+      <a href="#" class="text-black p-2 me-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="#1a194a"
+          class="bi bi-bell"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"
+          ></path></svg></a>
+      <div class="text-center">
+        <img class="user-img me-2" src="/assets/images/user.png" />
+        Welcome To Admin
+     
+      </div>
+      <div>
+    </div>
+    </div>
+  </div>
+  <div>
+    
+  </div>
+  <div
+    *ngIf="showspinner"
+    class="spinner-border text-primary"
+    style="width: 5rem; height: 5rem; margin-top: 120px; margin-left: 400px"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div *ngIf="!showspinner" class="box-container">
+    <div class="row justify-content-center section-row">
+      <div class="col-md-6 col-lg-4">
+        <div class="row card-body">
+          <div class="col-12 col-md-12">
+            <div class="row align-items-center">
+              <div class="col-6 text-end">Subject <span>:</span></div>
+              <div class="col-6 card-label">
+                <span>email test</span>
+              </div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Reported By <span>:</span></div>
+              <div class="col-6 card-label">
+                <span>test user</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="row card-body">
+          <div class="col-12 col-md-12">
+            <div class="row align-items-center">
+              <div class="col-6 text-end">Reported On <span>:</span></div>
+              <div class="col-6 card-label">
+                <span>2/22/2021 at 15:27:48Z</span>
+              </div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Closed On <span>:</span></div>
+              <div class="col-6 card-label">
+                <span></span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-6 text-end">EHours Utilizednd <span>:</span></div>
+              <div class="col-6 card-label">
+                <span></span>
+              </div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Severity <span>:</span></div>
+              <div class="col-6 card-label">
+                <span>Medium</span>
+              </div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Complexity<span>:</span></div>
+              <div class="col-6 card-label">
+                <span></span>
+              </div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Urgency<span>:</span></div>
+              <div class="col-6 card-label">
+                <span>Low</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <div class="row card-body">
+          <div class="col-12 col-md-12">
+            <div class="row align-items-center">
+              <div class="col-6 text-end">Status <span>:</span></div>
+              <div class="col-6 card-label">
+                <span>New</span>
+              </div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Case Type <span>:</span></div>
+              <div class="col-6 card-label">
+                <span>incident</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-6 text-end">Case Owner <span>:</span></div>
+              <div class="col-6 card-label"></div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Case Record Type <span>:</span></div>
+              <div class="col-6 card-label">
+                <span>My Consultant Rizing</span>
+              </div>
+            </div>
+            <div class="row mt-2 align-items-center">
+              <div class="col-6 text-end">Module<span>:</span></div>
+              <div class="col-6 card-label"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <div
+        *ngIf="showspinner"
+        class="spinner-border text-primary"
+        style="width: 5rem; height: 5rem; margin-top: 120px; margin-left: 400px"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="row table-wrapper" *ngIf="!showspinner">
+        <div class="col-md-12 cols">
+          <div class="table-responsive box">
+            <div>
+              <table class="table table-bordered tickets-table">
+                <thead>
+                  <tr>
+                    <th scope="col" width="10" class="">
+                      <label
+                        ><input type="checkbox" data-tablesaw-checkall=""
+                      /></label>
+                    </th>
+                    <th scope="col">Sender</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row" class="">
+                      <label><input type="checkbox" /></label>
+                    </td>
+                    <td scope="col">Sender User</td>
+                    <td scope="col">Issue with login</td>
+                    <td scope="col">10-May-2020</td>
+                    <td scope="col">View</td>
+                  </tr>
+                  <tr>
+                    <td scope="row" class="">
+                      <label><input type="checkbox" /></label>
+                    </td>
+                    <td scope="col">Sender User</td>
+                    <td scope="col">Issue with login</td>
+                    <td scope="col">10-May-2020</td>
+                    <td scope="col">View</td>
+                  </tr>
+                  <tr>
+                    <td scope="row" class="">
+                      <label><input type="checkbox" /></label>
+                    </td>
+                    <td scope="col">Sender User</td>
+                    <td scope="col">Issue with login</td>
+                    <td scope="col">10-May-2020</td>
+                    <td scope="col">View</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

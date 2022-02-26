@@ -1,0 +1,104 @@
+<div class="container mainconatiner">
+  <div class="row mt-3 align-items-center wrapper">
+    <div class="col-md-4">
+      <h2 class="welcome">New Service Request</h2>
+    </div>
+    <div class="col-md-8 text-right">
+      <app-header></app-header> 
+    </div>
+  </div>
+  <div>
+    <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+  </div>
+  <div
+    *ngIf="showspinner"
+    class="spinner-border text-primary"
+    style="width: 5rem; height: 5rem; margin-top: 120px; margin-left: 400px"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div *ngIf="!showspinner && !error" class="box-container-wrapper">
+    <form class="form-grp">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <label for="" class="form-label">Case Subject</label>
+          <input type="text" class="form-control" id="" placeholder="" />
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label">Account</label>
+          <select class="form-select">
+            <option value="">Rizing 1</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label"
+            >Contract<span class="text-danger">*</span></label
+          >
+          <select class="form-select">
+            <option value="">Contract 1</option>
+            <option value="">Contract 2</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label"
+            >Severity<span class="text-danger">*</span></label
+          >
+          <select class="form-select">
+            <option value="">low</option>
+            <option value="">Medium</option>
+            <option value="">High</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label"
+            >Urgency<span class="text-danger">*</span></label
+          >
+          <select class="form-select">
+            <option value="">low</option>
+            <option value="">Medium</option>
+            <option value="">High</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label"
+            >Case Type<span class="text-danger">*</span></label
+          >
+          <select class="form-select">
+            <option value="">Type 1</option>
+            <option value="">Type 2</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label">Module</label>
+          <select class="form-select">
+            <option value="">Type 1</option>
+            <option value="">Type 2</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label">Complexity</label>
+          <select class="form-select">
+            <option value="">Option 1</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="" class="form-label">Attachment</label>
+          <input class="form-control" type="file" id="formFile" />
+        </div>
+        <div class="col-md-12">
+          <label for="" class="form-label">Description</label>
+          <textarea class="form-control" id="" placeholder=""></textarea>
+        </div>
+
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100" type="submit">Submit</button>
+        </div>
+        <div class="col-md-2">
+          <button class="btn reset" type="reset">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

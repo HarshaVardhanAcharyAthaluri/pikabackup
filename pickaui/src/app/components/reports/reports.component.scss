@@ -1,0 +1,35 @@
+.mainconatiner {
+    margin-top: 10px;
+    max-width: 1270px;
+  }
+  .contactlistheader {
+    margin-bottom: 4px;
+    height: 35px;
+  }
+  input {
+    padding: 1rem;
+  }
+  table {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  
+  th {
+    color: black;
+    width: 80px;
+  }
+  .service_table {
+      .mat-header-row {
+      background-color: #f8d276 !important;
+    }
+  }
+  table {
+      width: 100%;
+      tr {
+        background-color: #fff;
+      }
+      td{
+          padding: 10px;
+      }
+    }
+    

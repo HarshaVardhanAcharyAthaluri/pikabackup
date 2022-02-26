@@ -1,0 +1,54 @@
+<div class="mainconatiner">
+    <div class="row contractheader">
+        <div class="col-sm">
+        <div class="contractheader">Service Request</div>
+        <div>{{servicerequestid}}</div>
+        </div>
+    </div>
+
+    <div class="row mainconatiner">
+      <div class="col-sm">
+        <span class="sideheader">Ticket Number: </span>{{servicerequestid}} <br/>
+        <span class="sideheader">Subject: </span>{{serviceRequestDetails.details.subject}}<br/>
+        <span class="sideheader">Status: </span>{{serviceRequestDetails.details.status}}<br/>
+      </div>
+      <div class="col-sm">
+        <span class="sideheader">Reported on Date/Time: </span>{{serviceRequestDetails.details.reportedondatetime}} <br/>
+        <span class="sideheader">Ticket Closed Date/Time: </span>{{serviceRequestDetails.details.tiketcloseddatetime}}<br/>
+        <span class="sideheader">Reported By: </span>{{serviceRequestDetails.details.reportedby}}<br/>
+      </div>
+
+      <div class="col-sm">
+        <span class="sideheader">Case Owner: </span>{{serviceRequestDetails.details.caseowner}} <br/>
+        <span class="sideheader">Legacy Ticket Number: </span><span style="color:red">no value from api</span><br/>
+        <span class="sideheader">Severity: </span>{{serviceRequestDetails.details.severity}}<br/>
+        <span class="sideheader">Urgency: </span><span style="color:red">no value from api</span><br/>
+      </div>
+      <div class="col-sm">
+        <span class="sideheader">Module: </span>{{serviceRequestDetails.details.module}}<br/>
+        <span class="sideheader">Case Record Type: </span>{{serviceRequestDetails.details.caserecordtype}}<br/>
+        <span class="sideheader">Case Type: </span><span style="color:red">no value from api</span><br/>
+      </div>
+    </div>  
+
+    <div class="mainconatiner">
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Interactions">
+        
+        <div class="interactioscontainer">
+           <textarea placeholder="plese add a note."></textarea>
+           <div>
+               <h2>System Admin2</h2>
+           </div>
+        </div>
+        </mat-tab>
+        <mat-tab label="Email">
+        <div class="alert alert-warning" role="alert">waiting for api</div>
+         
+      </mat-tab>
+        <mat-tab label="Attachment">
+            <div class="alert alert-warning" role="alert">waiting for api</div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+</div>

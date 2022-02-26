@@ -1,0 +1,154 @@
+<div class="container mainconatiner">
+  <div class="row mt-3 align-items-center wrapper">
+    <div class="col-md-4">
+      <h2 class="welcome">Service Request</h2>
+    </div>
+    <div class="col-md-8 text-right">
+      <app-header></app-header> 
+    </div>
+  </div>
+  <div class="mt-4" *ngIf="serviceRequestsList !== undefined && !showspinner">
+    <div class="row justify-content-center">
+        <div class="mt-4">
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <input
+              type="text"
+              style="
+                width: 100%;
+                height: 40px;
+                border: 1px solid;
+                border-radius: 10px;
+                background-color: transparent;
+              "
+              placeholder="Search"
+            />
+          </div>
+          <div class="col-md-7 right-section">
+            <div class="btn-group">
+              <a href="/newservicerequests" class="btn btn-primary" aria-current="page"
+                ><svg
+                  class="me-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  ></path></svg>New Request</a
+              >
+              <a href="#" class="btn btn-light">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+  <div
+    *ngIf="showspinner"
+    class="spinner-border text-primary"
+    style="width: 5rem; height: 5rem; margin-top: 120px; margin-left: 400px"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div class="mt-3 table-responsive">
+    <table
+      mat-table
+      [dataSource]="serviceRequestsList"
+      class="mat-elevation-z0 service_table"
+      *ngIf="!showspinner"
+    >
+      <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Ticket Number Column -->
+      <ng-container matColumnDef="Ticket Number" class="row-section">
+        <th mat-header-cell *matHeaderCellDef>Ticket Number</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ID }}
+        </td>
+      </ng-container>
+
+      <!-- Subject Column -->
+      <ng-container matColumnDef="Subject">
+        <th mat-header-cell *matHeaderCellDef>Subject</th>
+        <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+      </ng-container>
+
+      <!-- Reported on Date/Time Column -->
+      <ng-container matColumnDef="Reported on Date/Time">
+        <th mat-header-cell *matHeaderCellDef>Reported on Date/Time</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.CreationDateTime }}
+        </td>
+      </ng-container>
+
+      <!-- Severity Column -->
+      <ng-container matColumnDef="Severity">
+        <th mat-header-cell *matHeaderCellDef>Severity</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ServicePriorityCodeText }}
+        </td>
+      </ng-container>
+
+      <!-- Reported By Column -->
+      <ng-container matColumnDef="Reported By">
+        <th mat-header-cell *matHeaderCellDef>Reported By</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ReportedPartyName }}
+        </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ServiceRequestUserLifeCycleStatusCodeText }}
+        </td>
+      </ng-container>
+
+      <!-- Case Owner Type Column -->
+      <ng-container matColumnDef="Case Owner">
+        <th mat-header-cell *matHeaderCellDef>Case Owner</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ServicePerformerPartyName }}
+        </td>
+      </ng-container>
+
+      <!-- Module Column -->
+      <ng-container matColumnDef="Module">
+        <th mat-header-cell *matHeaderCellDef>Module</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ProductDescription }}
+        </td>
+      </ng-container>
+
+      <!-- Case Record Type Column -->
+      <ng-container matColumnDef="Case Record Type">
+        <th mat-header-cell *matHeaderCellDef>Case Record Type</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.CaseRecordType_KUT }}
+        </td>
+      </ng-container>
+
+      <!-- Ticket Closed Date/Time Column -->
+      <ng-container matColumnDef="Ticket Closed Date/Time">
+        <th mat-header-cell *matHeaderCellDef>Ticket Closed Date/Time</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.CompleteDuedatetimeContent }}
+        </td>
+      </ng-container>
+
+    
+
+      <tr mat-header-row *matHeaderRowDef="serviceRequestsColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: serviceRequestsColumns" (click)="rowClicked(row)"></tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+.mainconatiner {
+  margin-top: 10px;
+}
+
+.accountdetailrow {
+  border: none;
+}
+
+.contactlistheader {
+  background-color: #dee2e6;
+  margin-bottom: 4px;
+  height: 35px;
+}
+.box-title {
+  background-color: #f8d276;
+  color: #1a194a;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.section-row {
+  --bs-gutter-x: 3rem;
+}
+.card-body {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 1px 1px 5px #cac8c8;
+  padding: 1rem 0;
+  .row {
+    border-bottom: 1px solid #d0d2d4;
+    padding: 10px 0px;
+    margin: 0 0.5rem;
+    .card-label {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .text-end {
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+.table-section {
+  margin-top: 6rem;
+  height: 290px;
+}
+.table-wrapper {
+  background-color: #fff;
+  .cols {
+    padding: 0;
+    .table-responsive {
+      padding: 0 1rem;
+    }
+  }
+}
+.card-section {
+  height: 40px;
+}
+@media only screen and (min-width: 768px) {
+.main-c{
+  padding: 0 30px;
+}
+}

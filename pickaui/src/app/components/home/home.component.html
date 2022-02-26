@@ -1,0 +1,211 @@
+<div class="container main-c">
+  <div class="row mt-3 align-items-center wrapper">
+    <div class="col-md-4">
+      <h2 class="welcome">My Information</h2>
+    </div>
+    <div class="col-md-8 text-right">
+      <app-header></app-header> 
+    </div>
+  </div>
+  <div class="row align-items-center wrapper wrapper-border">
+    
+    <div>
+      <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+    </div>
+    <div
+      *ngIf="showspinner"
+      class="spinner-border text-primary"
+      style="width: 5rem; height: 5rem; margin-top: 120px; margin-left: 400px"
+      role="status"
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div *ngIf="!showspinner && !error">
+      <div class="row justify-content-center section-row">
+        <div class="col-md-6 col-lg-4">
+          <div class="mt-4">
+            <div class="row justify-content-center">
+              <h2 class="mb-0 box-title">Person's Account Information</h2>
+              <div class="col-md-5 d-none d-md-block"></div>
+            </div>
+          </div>
+          <div class="row card-body">
+            <div class="col-12 text-center mb-4 mb-md-0 card-section">
+              <img src="/assets/images/user.png" />
+            </div>
+            <div class="col-12 col-md-12">
+              <div class="row align-items-center">
+                <div class="col-6 text-end">ID <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.AccountID }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Status <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.LifeCycleStatusCode }}
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-6 text-end">Address <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.FormattedPostalAddressDescription }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Industry <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.IndustrialSectorCode }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Employees<span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.NoOfEmployees_SDK }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="mt-4">
+            <div class="row justify-content-center">
+              <h2 class="mb-0 box-title">Person's Account Team</h2>
+              <div class="col-md-5 d-none d-md-block"></div>
+            </div>
+          </div>
+          <div class="row card-body">
+            <div class="col-12 col-md-12">
+              <div class="row align-items-center">
+                <div class="col-6 text-end">ID <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.AccountID }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Status <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.LifeCycleStatusCode }}
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-6 text-end">Address <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.FormattedPostalAddressDescription }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Industry <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.IndustrialSectorCode }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Employees<span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.NoOfEmployees_SDK }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <div class="mt-4">
+            <div class="row justify-content-center">
+              <h2 class="mb-0 box-title">Instance Deatails</h2>
+              <div class="col-md-5 d-none d-md-block"></div>
+            </div>
+          </div>
+          <div class="row card-body">
+            <div class="col-12 col-md-12">
+              <div class="row align-items-center">
+                <div class="col-6 text-end">ID <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.AccountID }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Status <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.LifeCycleStatusCode }}
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-6 text-end">Address <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.FormattedPostalAddressDescription }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Industry <span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.IndustrialSectorCode }}
+                </div>
+              </div>
+              <div class="row mt-2 align-items-center">
+                <div class="col-6 text-end">Employees<span>:</span></div>
+                <div class="col-6 card-label">
+                  {{ c4ccustomer.NoOfEmployees_SDK }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-section">
+        <div
+          *ngIf="contactspineer"
+          class="spinner-border text-primary"
+          style="
+            width: 5rem;
+            height: 5rem;
+            margin-top: 120px;
+            margin-left: 400px;
+          "
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="row table-wrapper" *ngIf="!contactspineer">
+          <div class="col-md-12 cols">
+            <div class="box-title mb-4">
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <h4 class="mb-0 text-left">Person's Contact List</h4>
+                </div>
+                <div class="col-md-6 d-none d-md-block"></div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Contact Name</th>
+                    <th scope="col">Contact Title</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of c4cCustomerList">
+                    <td>{{ item.Name }}</td>
+                    <td>...</td>
+                    <td>{{ item.Email }}</td>
+                    <td>{{ item.StatusCodeText }}</td>
+                    <td>{{ item.Phone }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

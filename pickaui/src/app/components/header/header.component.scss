@@ -1,0 +1,19 @@
+header {
+  
+    padding: 15px 25px;
+    display: grid;
+    align-items: center;
+}
+.user-img{
+    height: 42px;
+    border-radius: 30px;
+}
+.dropdown-menu{
+    left: 85px;
+}
+
+.show{
+    :hover{
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,35 @@
+.mainconatiner {
+  margin-top: 10px;
+}
+.contactlistheader {
+  background-color: #dee2e6;
+  margin-bottom: 4px;
+  height: 35px;
+}
+h4 {
+  font-size: 1.5rem;
+}
+td.id {
+  width: 3%;
+}
+td.date {
+  width: 20%;
+}
+table {
+  width: 100%;
+  tr {
+    background-color: #fff;
+   
+  }
+}
+.thead-light {
+  tr {
+    background-color: #f8d276 !important;
+  }
+}
+.wrapper {
+  border-bottom: 1px solid #d0d2d4;
+}
+tr:hover{
+  background-color: rgba(0, 0, 0, 0.075)!important;
+}

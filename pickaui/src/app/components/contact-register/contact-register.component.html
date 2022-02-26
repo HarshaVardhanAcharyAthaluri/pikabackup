@@ -1,0 +1,106 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <div><h1>Contact Register</h1></div>
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="name">name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="contact.name"
+            required
+            minlength="3"
+            maxlength="20"
+            #name="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && name.invalid" role="alert">
+            <div *ngIf="name.errors.required">name is required</div>
+            <div *ngIf="name.errors.minlength">
+              name must be at least 3 characters
+            </div>
+            <div *ngIf="name.errors.maxlength">
+              name must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="contact.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contactId">contactId</label>
+          <input
+            type="text"
+            class="form-control"
+            name="contactId"
+            [(ngModel)]="contact.contactId"
+            required
+            #contactId="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && contactId.invalid">
+            contactId Is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="refCustomeId">refCustomeId</label>
+          <select  name="refCustomeId" #refCustomeId="ngModel"
+          [(ngModel)]="contact.refCustomeId"   class="form-control" >
+          <option *ngFor="let item of customrList" [ngValue]="item">{{item.name}} - ({{item.customerId}}) </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="contact.password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" *ngIf="buttontext=== 'Create Contact'" type="submit">{{buttontext}}</button>
+          <button class="btn btn-success btn-block" *ngIf="buttontext === 'Update Contact'"  (click)="updateContact()">{{buttontext}}</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,72 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="name">name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="customer.name"
+            required
+            minlength="3"
+            maxlength="20"
+            #name="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && name.invalid" role="alert">
+            <div *ngIf="name.errors.required">name is required</div>
+            <div *ngIf="name.errors.minlength">
+              name must be at least 3 characters
+            </div>
+            <div *ngIf="name.errors.maxlength">
+              name must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="customerId">CustomerId</label>
+          <input
+            type="text"
+            class="form-control"
+            name="customerId"
+            [(ngModel)]="customer.customerId"
+            required
+            #customerId="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && customerId.invalid">
+            CustomerId Is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            type="text"
+            class="form-control"
+            name="description"
+            [(ngModel)]="customer.description"
+            description
+            #description="ngModel"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" *ngIf="buttontext === 'Create Customer'" type="submit">{{buttontext}}</button>
+          <button class="btn btn-success btn-block" *ngIf="buttontext === 'Update Customer'"  (click)="updateCustomer()">{{buttontext}}</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>

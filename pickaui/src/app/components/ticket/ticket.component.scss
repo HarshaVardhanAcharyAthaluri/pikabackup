@@ -1,0 +1,132 @@
+.wrapper {
+  border-bottom: 1px solid #d0d2d4;
+  padding-bottom: 0.8rem;
+}
+.tickets-heading {
+  font-size: 30px;
+  font-weight: 700;
+}
+.mainconatiner {
+  margin-top: 10px;
+}
+
+.accountdetailrow {
+  border: none;
+}
+table {
+  border-spacing: 0 15px;
+  border-collapse: separate;
+  margin-top: 1rem;
+}
+.contactlistheader {
+  background-color: #dee2e6;
+  margin-bottom: 4px;
+  height: 35px;
+}
+.box-title {
+  background-color: #f8d276;
+  color: #1a194a;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.section-row {
+  --bs-gutter-x: 3rem;
+  @media only screen and (max-width: 959px) {
+    .col-md-6 {
+      margin-bottom: 2rem;
+    }
+  }
+}
+.card-body {
+  background-color: #fff;
+  padding: 0px 0 1rem !important;
+  height: 100%;
+  box-shadow: 1px 1px 5px #cac8c8;
+  padding: 1rem 0;
+}
+.card-body .row {
+  border-bottom: 1px solid #d0d2d4;
+  padding: 10px 0px;
+  margin: 0 1px;
+}
+
+.card-body .text-end {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+.card-label {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.table-section {
+  margin-top: 3rem;
+  height: 290px;
+}
+.table-wrapper {
+  background-color: #fff;
+}
+.table-wrapper .cols {
+  padding: 0;
+}
+
+.card-section {
+  height: 40px;
+}
+.tickets-table {
+  border: 0px solid transparent;
+}
+.tickets-table thead {
+  background-color: #f8d276;
+}
+.tickets-table thead th {
+  padding: 15px;
+}
+.top-right-section{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .user-img{
+    width: 15%;
+    margin-right: 4px;
+  }
+}
+.tickets-table td label {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 7px;
+}
+.tickets-table th label {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -17px;
+}
+.tickets-table thead th:first-child {
+  width: 10px !important;
+}
+.tickets-table tbody td {
+  padding: 15px;
+}
+
+.tickets-table tbody {
+  margin-top: 15px;
+}
+.box {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 1px 1px 5px #cac8c8;
+}
+.box-container {
+  margin: 2rem 1.5rem;
+  @media only screen and (max-width: 767px) {
+    margin: 2rem 0rem;
+  }
+}
+.tickets-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+.tickets-table tbody tr td:last-child {
+  font-weight: 500;
+}

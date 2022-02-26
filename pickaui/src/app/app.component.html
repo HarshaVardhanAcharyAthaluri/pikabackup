@@ -1,0 +1,356 @@
+<div id="app">
+  <!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="/welcome" class="navbar-brand">PikaPortal</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a class="nav-link" routerLink="admin">Employee List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="showAdminBoard" routerLink="contact-list"
+          >Contacts List</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="showAdminBoard" routerLink="customer-list"
+          >Customers List</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          *ngIf="!showAdminBoard && isLoggedIn"
+          routerLink="home"
+          >Account Information</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          *ngIf="!showAdminBoard && isLoggedIn"
+          routerLink="servicecontracts"
+          >Service Contracts</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          *ngIf="!showAdminBoard && isLoggedIn"
+          routerLink="reports"
+          >Reports</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          *ngIf="!showAdminBoard && isLoggedIn"
+          routerLink="servicerequests"
+          >Service Requests</a
+        >
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <span class="nav-link" style="color: white"
+          >Welcome {{ username | uppercase }}</span
+        >
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav> -->
+  <div class="navigation" *ngIf="isLoggedIn">
+    <mat-drawer-container class="side-nav-container" autosize>
+      <mat-drawer #drawer class="drawer" *ngIf="isLoggedIn" opened="true"  disableClose="true" mode="push" [ngClass]="{'srink': !isExpanded}">
+        <mat-toolbar class="header"   >
+          <div [ngClass]="{'srink': !isExpanded}">
+            <img src="/assets/images/logo-white.png" class="m-none img-fit"  />
+          </div>
+          <mat-icon (click)="isExpanded = !isExpanded" class="hidem">menu</mat-icon>
+          <mat-icon (click)="drawer.close()" class="hided">close</mat-icon>
+        </mat-toolbar>
+        <div class="sidenav-list" *ngIf="showAdminBoard">
+          <p class="first">
+            <button class="btn btn-default btn-sm" routerLink="employee-list">
+              Employee Administration
+            </button>
+          </p>
+          <p>
+            <button
+              (click)="showFiller = !showFiller"
+              class="btn btn-default btn-sm"
+            >
+              <span class="glyphicon glyphicon-chevron-right"></span> Customer
+              Administration
+            </button>
+          </p>
+          <p *ngIf="showFiller">
+            <button class="btn btn-default btn-sm">
+              <a routerLink="customer-list" style="text-decoration: none"
+                >Customers</a
+              >
+            </button>
+          </p>
+          <p *ngIf="showFiller">
+            <button class="btn btn-default btn-sm">
+              <a routerLink="contact-list" style="text-decoration: none"
+                >Contacts</a
+              >
+            </button>
+          </p>
+        </div>
+        <div class="sidenav-list" *ngIf="!showAdminBoard">
+          <ul>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                routerLink="welcome"
+                routerLinkActive="active"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-columns-gap"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">Dashboard</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                routerLink="home"
+                routerLinkActive="active"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-person"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">My Information</span></a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                routerLink="servicerequests"
+                routerLinkActive="active"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-clipboard"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
+                    ></path>
+                    <path
+                      d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">Service Requests</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                routerLink="servicecontracts"
+                routerLinkActive="active"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-hdd-rack"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm2 7a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"
+                    ></path>
+                    <path
+                      d="M2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1v2H2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2h-1V7h1a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm0 7v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-3-4v2H4V7h8z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">Service Contracts</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                routerLink="reports"
+                routerLinkActive="active"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-bar-chart"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">Service Reports</span></a
+              >
+            </li>
+          </ul>
+          <strong class="second-heading">Help</strong>
+          <ul>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-gear"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"
+                    ></path>
+                    <path
+                      d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">Settings</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-chat-left"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">Chat</span></a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-calendar2"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"
+                    ></path>
+                    <path
+                      d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">Blog</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                *ngIf="!showAdminBoard && isLoggedIn"
+                ><span class="icon"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-exclamation-octagon"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"
+                    ></path>
+                    <path
+                      d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
+                    ></path></svg></span
+                ><span [ngClass]="{'hide': !isExpanded}">FAQ</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </mat-drawer>
+      <mat-drawer-content [ngClass]="{'mat-drawer-content-srink': !isExpanded}">
+        <mat-toolbar
+          class="header mobile-nav"
+          (click)="drawer.toggle()"
+          *ngIf="drawer && !drawer.opened"
+        >
+          <mat-icon (click)="drawer.close()">menu</mat-icon>
+          <div class="col-md-8 text-right top-right-section m-block">
+            <a href="#" class="text-black p-2 me-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                fill="#fff"
+                class="bi bi-bell"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"
+                ></path></svg></a>
+            <div class="text-center">
+              <img class="user-img-mobile me-2 m-block" src="/assets/images/user.png" />
+            </div>
+            <div>dropdown</div>
+          </div>
+        </mat-toolbar>
+
+        <div class="sidenav-content">
+          <div class="container" >
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+  <div *ngIf="!isLoggedIn">
+    <router-outlet></router-outlet>
+  </div>
+</div>
